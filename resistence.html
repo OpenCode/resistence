@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://purecss.io/layouts/marketing/ -->
+<html lang="en" class="yui3-js-enabled wf-omnespro-n2-active wf-omnespro-n3-active wf-proximanova-n1-active wf-proximanova-n4-active wf-proximanova-n7-active wf-active">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pure</title>
+
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.1.0/pure-min.css">
+
+
+	<style>
+	.l-box {padding: 1em;}
+	</style>
+	
+	<script>
+		var VALS={C_000000:0, C_B28E33:1, C_FF0000:2, C_FFA500:3, C_FFFF00:4, C_00FF00:5, C_1E90FF:6, C_A020F0:7, C_7F7F7F:8, C_FFFFFF:9};
+		var TOL={C_E6E6FA:10, C_C68D00:5, C_B28E33:1, C_FF0000:2, C_00FF00:0.5, C_1E90FF:0.25, C_A020F0:0.1};
+		var MOL={C_E6E6FA:'', C_C68D00:'', C_000000:'', C_B28E33:'0', C_FF0000:'00', C_FFA500:'K', C_FFFF00:'0K', C_00FF00:'00K', C_1E90FF:'M', C_A020F0:'OM'};
+		var PRE_MOL={C_E6E6FA:'0,0', C_C68D00:'0,', C_000000:'', C_B28E33:'', C_FF0000:'', C_FFA500:'', C_FFFF00:'', C_00FF00:'', C_1E90FF:'', C_A020F0:''};
+		function change_values(element_id, color) {
+			value = '';
+			if (element_id == 'tol'){ value = TOL[color.replace('#', 'C_')] + '%' }
+			if (element_id == 'mol'){ 
+				value = MOL[color.replace('#', 'C_')] + 'Ω';
+				pre_value = PRE_MOL[color.replace('#', 'C_')];
+				element_span = document.getElementById('r_prevalue').innerHTML=pre_value;
+				console.log('PRE_VALUE ' + pre_value);
+				}
+			if (element_id == 'c1' || element_id == 'c2'){ 
+				value = VALS[color.replace('#', 'C_')]
+				if (element_id == 'c1' && value == '0') { value = ''; }
+				}
+			element_span = document.getElementById('r_' + element_id).innerHTML=value ;
+			element = document.getElementById(element_id);
+			element.style.background = color;
+			console.log('VALUE ' + value);
+			}
+	</script>
+
+</head>
+
+<body>
+
+	<div class="pure-g">
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3>Resistenza</h3>
+				<h3> <span id="r_prevalue"></span><span id="r_c1"></span><span id="r_c2"></span><span id="r_c3"></span><span id="r_mol"></span> <span id="r_tol"></span> </h3>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3 id='c1'>&nbsp;</h3>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3 id='c2'>&nbsp;</h3>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3 id='c3'>&nbsp;</h3>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3 id='mol'>&nbsp;</h3>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3 id='tol'>&nbsp;</h3>
+			</div>
+		</div>
+	</div>
+
+	<div class="pure-g">
+
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3>Tipo</h3>
+				<table class="pure-table pure-table-bordered">
+					<tbody>
+						<tr>
+							<td><input type="radio" name="t" value="s" onChange="change_type(this.value)"></td>
+							<td>Standard</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="t" value="p" onChange="change_type(this.value)"></td>
+							<td>Precisione</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3>1° Colore</h3>
+				<table class="pure-table pure-table-bordered">
+					<tbody>
+						<tr>
+							<td><input type="radio" name="c1" value="#000000" onChange="change_values(this.name, this.value)"></td>
+							<td>Nero</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#B28E33" onChange="change_values(this.name, this.value)"></td>
+							<td>Marrone</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#FF0000" onChange="change_values(this.name, this.value)"></td>
+							<td>Rosso</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#FFA500" onChange="change_values(this.name, this.value)"></td>
+							<td>Arancio</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#FFFF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Giallo</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#00FF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Verde</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#1E90FF" onChange="change_values(this.name, this.value)"></td>
+							<td>Blu</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#A020F0" onChange="change_values(this.name, this.value)"></td>
+							<td>Viola</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#7F7F7F" onChange="change_values(this.name, this.value)"></td>
+							<td>Grigio</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c1" value="#FFFFFF" onChange="change_values(this.name, this.value)"></td>
+							<td>Bianco</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3>2° Colore</h3>
+				<table class="pure-table pure-table-bordered">
+					<tbody>
+						<tr>
+							<td><input type="radio" name="c2" value="#000000" onChange="change_values(this.name, this.value)"></td>
+							<td>Nero</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#B28E33" onChange="change_values(this.name, this.value)"></td>
+							<td>Marrone</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#FF0000" onChange="change_values(this.name, this.value)"></td>
+							<td>Rosso</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#FFA500" onChange="change_values(this.name, this.value)"></td>
+							<td>Arancio</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#FFFF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Giallo</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#00FF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Verde</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#1E90FF" onChange="change_values(this.name, this.value)"></td>
+							<td>Blu</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#A020F0" onChange="change_values(this.name, this.value)"></td>
+							<td>Viola</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#7F7F7F" onChange="change_values(this.name, this.value)"></td>
+							<td>Grigio</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c2" value="#FFFFFF" onChange="change_values(this.name, this.value)"></td>
+							<td>Bianco</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3>3° Colore</h3>
+				<table class="pure-table pure-table-bordered">
+					<tbody>
+						<tr>
+							<td><input type="radio" name="c3" value="#000000" onChange="change_values(this.name, this.value)"></td>
+							<td>Nero</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#B28E33" onChange="change_values(this.name, this.value)"></td>
+							<td>Marrone</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#FF0000" onChange="change_values(this.name, this.value)"></td>
+							<td>Rosso</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#FFA500" onChange="change_values(this.name, this.value)"></td>
+							<td>Arancio</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#FFFF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Giallo</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#00FF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Verde</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#1E90FF" onChange="change_values(this.name, this.value)"></td>
+							<td>Blu</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#A020F0" onChange="change_values(this.name, this.value)"></td>
+							<td>Viola</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#7F7F7F" onChange="change_values(this.name, this.value)"></td>
+							<td>Grigio</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="c3" value="#FFFFFF" onChange="change_values(this.name, this.value)"></td>
+							<td>Bianco</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3>Moltiplicatore</h3>
+				<table class="pure-table pure-table-bordered">
+					<tbody>
+						<tr>
+							<td><input type="radio" name="mol" value="#E6E6FA" onChange="change_values(this.name, this.value)"></td>
+							<td>Argento</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#C68D00" onChange="change_values(this.name, this.value)"></td>
+							<td>Oro</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#000000" onChange="change_values(this.name, this.value)"></td>
+							<td>Nero</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#B28E33" onChange="change_values(this.name, this.value)"></td>
+							<td>Marrone</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#FF0000" onChange="change_values(this.name, this.value)"></td>
+							<td>Rosso</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#FFA500" onChange="change_values(this.name, this.value)"></td>
+							<td>Arancio</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#FFFF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Giallo</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#00FF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Verde</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#1E90FF" onChange="change_values(this.name, this.value)"></td>
+							<td>Blu</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="mol" value="#A020F0" onChange="change_values(this.name, this.value)"></td>
+							<td>Viola</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="pure-u-1-6">
+			<div class="l-box">
+				<h3>Tolleranza</h3>
+				<table class="pure-table pure-table-bordered">
+					<tbody>
+						<tr>
+							<td><input type="radio" name="tol" value="#E6E6FA" onChange="change_values(this.name, this.value)"></td>
+							<td>Argento</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="tol" value="#C68D00" onChange="change_values(this.name, this.value)"></td>
+							<td>Oro</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="tol" value="#B28E33" onChange="change_values(this.name, this.value)"></td>
+							<td>Marrone</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="tol" value="#FF0000" onChange="change_values(this.name, this.value)"></td>
+							<td>Rosso</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="tol" value="#00FF00" onChange="change_values(this.name, this.value)"></td>
+							<td>Verde</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="tol" value="#1E90FF" onChange="change_values(this.name, this.value)"></td>
+							<td>Blu</td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="tol" value="#A020F0" onChange="change_values(this.name, this.value)"></td>
+							<td>Viola</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
